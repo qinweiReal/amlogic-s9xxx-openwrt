@@ -6,13 +6,16 @@
 name: Build OpenWrt
 
 on:
+  schedule:
+    - cron: "0 17 * * *" # every day
+    
   repository_dispatch:
   workflow_dispatch:
     inputs:
       source_branch:
         description: "Select the source branch"
         required: false
-        default: "openwrt-main"
+        default: "immortalwrt-master"
         type: choice
         options:
           - openwrt-main
@@ -21,7 +24,7 @@ on:
       openwrt_board:
         description: "Select device board"
         required: false
-        default: "all"
+        default: "s905d"
         type: choice
         options:
           - all
